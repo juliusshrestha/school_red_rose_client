@@ -1,15 +1,19 @@
 import axios from 'axios'
 
+let token = ''
+if (typeof window !== 'undefined') {
+  // Perform localStorage action
+  token = String(localStorage.getItem('token'))
+}
+
 var value = 'en'
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:3000/',
   headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImNyZWRJZCI6NCwidXNlcklkIjoiZWRlZDZiNjktODUxOS00MzYwLTk1NTgtZjBiZjIzM2VhOGE1IiwiZW1haWwiOiJqdWxpdXNzaHJlc3RoYTI5KzNAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkWlNYZEZKQ0hGaGYyNGpRWGg4L25sdXUvTkpTdGRONGtzcjJMWUVSLmpLNmwvT1lpbE92QXkiLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTAxVDAzOjUwOjQwLjQ3MFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTAxVDA2OjQzOjA2LjI5MVoiLCJ1c2VyIjp7InVzZXJJZCI6ImVkZWQ2YjY5LTg1MTktNDM2MC05NTU4LWYwYmYyMzNlYThhNSIsImZpcnN0TmFtZSI6Ikp1bGVzaCIsIm1pZGRsZU5hbWUiOiJsIiwibGFzdE5hbWUiOiJTaHJlc3RoYSIsInBob25lIjoiOTg2MDE0NDgyNyIsImNvdW50cnlDb2RlIjo5NzcsInVzZXJTdGF0dXMiOiJBQ1RJVkUifX0sImlhdCI6MTY3OTc1MjE2NywiZXhwIjoxNjc5NzU1NzY3fQ.Teh5w483ophUrprTpOIXLKq9BPjujGXUucW8UpzLNQk',
+    Authorization: `Bearer ${token}`,
     'Access-Controll-Allow-Origin': '',
-    accept: 'application/json',
-
+    accept: 'application/json'
   }
 
   // baseURL: 'https://www.asha-holdings.com/api/'
