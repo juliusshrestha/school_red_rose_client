@@ -27,7 +27,7 @@ import EmailOutline from 'mdi-material-ui/EmailOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 
-import MyComponent from '../../@core/layouts/components/editor/editor'
+import Editor from '../../@core/layouts/components/editor/editor'
 
 import axiosInstance from '../../axios/axiosInstance'
 
@@ -68,7 +68,7 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 }))
 
 const TabAccount = () => {
-  const {  handleSubmit } = useForm({
+  const { handleSubmit } = useForm({
     mode: 'onBlur'
   })
 
@@ -76,9 +76,9 @@ const TabAccount = () => {
   const [isChecked, setIsChecked] = useState(false)
   const classes = useStyles()
 
-  const addContact = async data => {
+  const addAccount = async data => {
     try {
-      const response = await axiosInstance.post('/contacts', data)
+      const response = await axiosInstance.post('/comp', data)
       console.log(response.data)
       reset()
     } catch (error) {
@@ -92,13 +92,14 @@ const TabAccount = () => {
 
   return (
     <CardContent>
-      <form onSubmit={handleSubmit(addContact)}>
+      <form onSubmit={handleSubmit(addAccount)}>
         <Grid container spacing={7}>
           <Grid item xs={12}>
             <TextField
               fullWidth
               label='Title'
               placeholder='Leonard Carter'
+              name='title'
               InputProps={{
                 startAdornment: <InputAdornment position='start'></InputAdornment>
               }}
@@ -107,7 +108,7 @@ const TabAccount = () => {
           <Grid item xs={12}>
             <FormControl fullWidth>
               <InputLabel>Content Type</InputLabel>
-              <Select label='compCategory' defaultValue='notice'>
+              <Select name='compCategory' label='compCategory' defaultValue='notice'>
                 <MenuItem value='notice'>Notice</MenuItem>
                 <MenuItem value='news'>News</MenuItem>
                 <MenuItem value='download'>Download</MenuItem>
@@ -117,12 +118,13 @@ const TabAccount = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <MyComponent />
+            <Editor />
           </Grid>
           <Grid item xs={12} marginTop='30px'>
             <FormControlLabel
               control={<Checkbox checked={isChecked} onChange={handleChange} color='primary' />}
               label='Pop Up'
+              name='popUp'
             />
           </Grid>
           <Grid item xs={12}>
