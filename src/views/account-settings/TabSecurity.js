@@ -15,11 +15,15 @@ import FormControl from '@mui/material/FormControl'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import axiosInstance from '../../axios/axiosInstance'
+
 // ** Icons Imports
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import KeyOutline from 'mdi-material-ui/KeyOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
+
+import router, { useRouter } from 'next/router'
 
 const TabSecurity = () => {
   // ** States
@@ -31,6 +35,30 @@ const TabSecurity = () => {
     showCurrentPassword: false,
     showConfirmNewPassword: false
   })
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    const userId = localStorage.getItem('userId')
+
+    try {
+      const { newPassword, currentPassword, confirmNewPassword } = values
+
+      const response = await axiosInstance.patch(`auth/change-password/`, {
+        userId: userId,
+        oldPassword: currentPassword,
+        newPassword
+      })
+
+      // handle successful response
+      console.log(response.data)
+
+      router.push('/account-settings/', null, { shallow: true })
+    } catch (error) {
+      // handle error response
+      console.error(error)
+    }
+  }
 
   // Handle Current Password
   const handleCurrentPasswordChange = prop => event => {
@@ -47,7 +75,10 @@ const TabSecurity = () => {
 
   // Handle New Password
   const handleNewPasswordChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
+    // setValues({ ...values, [prop]: event.target.value })
+    setValues(prevProps => {
+      return { ...prevProps, [prop]: event.target.value }
+    })
   }
 
   const handleClickShowNewPassword = () => {
@@ -72,7 +103,7 @@ const TabSecurity = () => {
   }
 
   return (
-    <form>
+    <form autoComplete='off' onSubmit={handleSubmit}>
       <CardContent sx={{ paddingBottom: 0 }}>
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6}>
@@ -164,7 +195,7 @@ const TabSecurity = () => {
           </Grid>
         </Grid>
         <Box sx={{ mt: 11 }}>
-          <Button variant='contained' sx={{ marginRight: 3.5 }}>
+          <Button variant='contained' type='submit' sx={{ marginRight: 3.5 }}>
             Save Changes
           </Button>
           <Button
