@@ -1,8 +1,9 @@
 // ** React Imports
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useMemo } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
+import router, { useRouter } from 'next/router'
 
 // ** MUI Components
 import Box from '@mui/material/Box'
@@ -37,6 +38,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
+import axiosInstance from '../../../axios/axiosInstance'
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -64,12 +66,50 @@ const RegisterPage = () => {
     password: '',
     showPassword: false
   })
+  const [token, setToken] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [terms, setTerms] = useState(false)
+
+  const isDisabled = useMemo(() => {
+    if (!terms) return true
+    if (!email) return true
+    if (!password) return true
+
+    return false
+  }, [terms, email, password])
 
   // ** Hook
   const theme = useTheme()
 
+  const handleSubmit = async event => {
+    event.preventDefault()
+
+    try {
+      const response = await axiosInstance.post('auth/register', {
+        email,
+        password
+      })
+
+      // handle successful response
+      console.log(response.data)
+      localStorage.setItem('token', response.data.token)
+
+      setToken(response.data.token)
+      router.push('/pages/login', null, { shallow: true })
+    } catch (error) {
+      // handle error response
+      console.error(error)
+    }
+  }
+
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
+    let pas = { ...values, [prop]: event.target.value }
+
+    // Array.from(pas).map(element => console.log(element.password))
+
+    setPassword(pas.password)
   }
 
   const handleClickShowPassword = () => {
@@ -78,6 +118,12 @@ const RegisterPage = () => {
 
   const handleMouseDownPassword = event => {
     event.preventDefault()
+  }
+
+  const handleTerms = prop => event => {
+    event.preventDefault()
+    setTerms({ ...values, [prop]: event.target.value })
+    console.log({ ...values, [prop]: event.target.value })
   }
 
   return (
@@ -161,13 +207,21 @@ const RegisterPage = () => {
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}></Typography>
             <Typography variant='body2'>Fill in the required fileds!</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField fullWidth type='email' label='Email' sx={{ marginBottom: 4 }} />
+          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+            <TextField
+              fullWidth
+              type='email'
+              label='Email'
+              required
+              onChange={e => setEmail(e.target.value)}
+              sx={{ marginBottom: 4 }}
+            />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-register-password'>Password</InputLabel>
               <OutlinedInput
                 label='Password'
                 value={values.password}
+                required
                 id='auth-register-password'
                 onChange={handleChange('password')}
                 type={values.showPassword ? 'text' : 'password'}
@@ -186,17 +240,24 @@ const RegisterPage = () => {
               />
             </FormControl>
             <FormControlLabel
-              control={<Checkbox />}
+              control={<Checkbox onChange={e => setTerms(!terms)} />}
               label={
                 <Fragment>
                   <span>I agree to </span>
                   <Link href='/' passHref>
-                    <LinkStyled onClick={e => e.preventDefault()}>privacy policy & terms</LinkStyled>
+                    <LinkStyled>privacy policy & terms</LinkStyled>
                   </Link>
                 </Fragment>
               }
             />
-            <Button fullWidth size='large' type='submit' variant='contained' sx={{ marginBottom: 7 }}>
+            <Button
+              fullWidth
+              size='large'
+              disabled={isDisabled}
+              variant='contained'
+              type='submit'
+              sx={{ marginBottom: 7 }}
+            >
               Sign up
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
