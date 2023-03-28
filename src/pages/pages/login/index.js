@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -84,7 +84,10 @@ const LoginPage = () => {
       // handle successful response
       console.log(response.data)
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('userId', response.data.user.userId)
+
       setToken(response.data.token)
+      router.push('/', null, { shallow: true })
     } catch (error) {
       // handle error response
       console.error(error)
@@ -106,17 +109,12 @@ const LoginPage = () => {
     event.preventDefault()
   }
 
-  const handleLogin = () => {
-    if (typeof window !== 'undefined') {
-      const token_v = window.localStorage.getItem('token')
-
-      if (token_v == token) {
-        router.push('/')
-      } else {
-        console.log('Invalid token')
-      }
+  useEffect(() => {
+    const tokenV = localStorage.getItem('token')
+    if (tokenV) {
+      router.push('/', null, { shallow: true })
     }
-  }
+  }, [])
 
   return (
     <Box className='content-center'>
@@ -239,14 +237,7 @@ const LoginPage = () => {
                 <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
               </Link>
             </Box>
-            <Button
-              fullWidth
-              size='large'
-              variant='contained'
-              type='submit'
-              onClick={handleLogin()}
-              sx={{ marginBottom: 7 }}
-            >
+            <Button fullWidth size='large' variant='contained' type='submit' sx={{ marginBottom: 7 }}>
               Login
             </Button>
           </form>
