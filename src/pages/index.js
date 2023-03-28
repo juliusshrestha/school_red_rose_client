@@ -15,6 +15,8 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
 import Table from 'src/views/dashboard/Table'
+import { useEffect } from 'react'
+import router from 'next/router'
 
 //import Trophy from 'src/views/dashboard/Trophy'
 // import TotalEarning from 'src/views/dashboard/TotalEarning'
@@ -24,6 +26,13 @@ import Table from 'src/views/dashboard/Table'
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 
 const Dashboard = () => {
+  useEffect(() => {
+    const tokenV = localStorage.getItem('token')
+    if (!tokenV) {
+      router.push('/pages/login', null, { shallow: true })
+    }
+  }, [])
+
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
