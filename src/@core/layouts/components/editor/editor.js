@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button'
 
 import '../../../../../node_modules/react-quill/dist/quill.snow.css'
 
-class MyComponent extends React.Component {
+class Editor extends React.Component {
   constructor(props) {
     super(props)
     this.state = { editorHtml: '' }
@@ -66,7 +66,7 @@ class MyComponent extends React.Component {
 
       // Insert uploaded image
       // this.quill.insertEmbed(range.index, 'image', res.body.image);
-      this.quill.insertEmbed(range.index, 'image', res)
+      this.quill.insertEmbed(range.index, 'image', file)
     }
   }
 
@@ -102,4 +102,4 @@ class MyComponent extends React.Component {
   }
 }
 
-export default MyComponent
+export default Editor
