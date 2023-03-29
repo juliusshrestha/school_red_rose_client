@@ -1,5 +1,8 @@
 // ** React Imports
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -22,10 +25,12 @@ import EyeOutline from 'mdi-material-ui/EyeOutline'
 import KeyOutline from 'mdi-material-ui/KeyOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 import LockOpenOutline from 'mdi-material-ui/LockOpenOutline'
-
+import checkToken from 'src/pages/checkToken'
 import router, { useRouter } from 'next/router'
 
 const TabSecurity = () => {
+  checkToken()
+
   // ** States
   const [values, setValues] = useState({
     newPassword: '',
@@ -35,10 +40,10 @@ const TabSecurity = () => {
     showCurrentPassword: false,
     showConfirmNewPassword: false
   })
+  const message = ''
 
   const handleSubmit = async event => {
     event.preventDefault()
-
     const userId = localStorage.getItem('userId')
 
     try {
@@ -51,12 +56,26 @@ const TabSecurity = () => {
       })
 
       // handle successful response
-      console.log(response.data)
+      // console.log(response.data)
+      const message = response.data
+      toast.success(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
 
       router.push('/account-settings/', null, { shallow: true })
     } catch (error) {
       // handle error response
-      console.error(error)
+      if (error.response.status === 401) {
+        router.push('/pages/login')
+      }
+      const message = error.response.data
+      toast.warn(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
     }
   }
 

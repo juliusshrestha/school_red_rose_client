@@ -30,6 +30,7 @@ import MessageOutline from 'mdi-material-ui/MessageOutline'
 import Editor from '../../@core/layouts/components/editor/editor'
 
 import axiosInstance from '../../axios/axiosInstance'
+import checkToken from 'src/pages/checkToken'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
@@ -68,6 +69,8 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 }))
 
 const TabAccount = () => {
+  checkToken()
+
   const { handleSubmit } = useForm({
     mode: 'onBlur'
   })
@@ -82,7 +85,8 @@ const TabAccount = () => {
       console.log(response.data)
       reset()
     } catch (error) {
-      console.error(error)
+      // Sends error to the client side
+      response.status(error.response.status).send(error.response.data)
     }
   }
 

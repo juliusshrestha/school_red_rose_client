@@ -1,11 +1,14 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Link from '@mui/material/Link'
-import Alert from '@mui/material/Alert'
+
 import Select from '@mui/material/Select'
 import { styled, useTheme } from '@mui/material/styles'
 import MenuItem from '@mui/material/MenuItem'
@@ -18,6 +21,7 @@ import CardContent from '@mui/material/CardContent'
 import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button'
 import axiosInstance from '../../axios/axiosInstance'
+import checkToken from 'src/pages/checkToken'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
@@ -48,6 +52,8 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 }))
 
 const TabAccount = () => {
+  checkToken()
+
   // ** State
   const [values, setValues] = useState({})
   const [firstName, setfirstName] = useState('')
@@ -65,8 +71,8 @@ const TabAccount = () => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    console.log(firstName)
 
+    const dataError = ''
     const userId = localStorage.getItem('userId')
     try {
       const response = await axiosInstance.patch(`user/${userId}/`, {
@@ -79,12 +85,26 @@ const TabAccount = () => {
       })
 
       // handle successful response
-      console.log(response.data)
+      //console.log(response.data)
 
+      const message = response.data
+      toast.success(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
       router.push('/account-settings/', null, { shallow: true })
     } catch (error) {
       // handle error response
-      console.error(error)
+      if (error.response.status === 401) {
+        router.push('/pages/login')
+      }
+      const message = error.response.data
+      toast.warn(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
     }
   }
 
@@ -155,9 +175,8 @@ const TabAccount = () => {
               fullWidth
               type='number'
               onChange={e => setcountryCode(e.target.value)}
-              label='Country Code'
               name='countryCode'
-              placeholder='977'
+              placeholder='Country Code(977)'
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -175,7 +194,8 @@ const TabAccount = () => {
             <Button variant='contained' type='submit' sx={{ marginRight: 3.5 }}>
               Save Changes
             </Button>
-            <Button type='reset' variant='outlined' onClick={handleReset()} color='secondary'>
+
+            <Button type='reset' variant='outlined' onClick={handleReset} color='secondary'>
               Reset
             </Button>
           </Grid>

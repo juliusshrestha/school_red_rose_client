@@ -1,5 +1,8 @@
 // ** React Imports
 import { useEffect, useState } from 'react'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -67,6 +70,7 @@ const LoginPage = () => {
   const [token, setToken] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const message = ''
 
   // ** Hook
   const theme = useTheme()
@@ -82,15 +86,30 @@ const LoginPage = () => {
       })
 
       // handle successful response
-      console.log(response.data)
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('userId', response.data.user.userId)
+
+      const message = response.data.message
+      toast.success(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
+      localStorage.setItem('token', response.data.data.token)
+      console.log(response.data.data)
+      localStorage.setItem('userId', response.data.data.user.userId)
 
       setToken(response.data.token)
       router.push('/', null, { shallow: true })
     } catch (error) {
       // handle error response
-      console.error(error)
+      console.log(error)
+      if (error) {
+        const message = error.response.data
+        toast.warn(`${message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+          hideProgressBar: true
+        })
+      }
     }
   }
 
@@ -108,13 +127,6 @@ const LoginPage = () => {
   const handleMouseDownPassword = event => {
     event.preventDefault()
   }
-
-  useEffect(() => {
-    const tokenV = localStorage.getItem('token')
-    if (tokenV) {
-      router.push('/', null, { shallow: true })
-    }
-  }, [])
 
   return (
     <Box className='content-center'>
@@ -233,6 +245,7 @@ const LoginPage = () => {
             <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
             >
+              {' '}
               <Link passHref href='/'>
                 <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
               </Link>

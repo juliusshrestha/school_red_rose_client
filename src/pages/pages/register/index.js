@@ -1,5 +1,8 @@
 // ** React Imports
 import { useState, Fragment, useMemo } from 'react'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -75,6 +78,7 @@ const RegisterPage = () => {
     if (!terms) return true
     if (!email) return true
     if (!password) return true
+    const message = ''
 
     return false
   }, [terms, email, password])
@@ -92,14 +96,24 @@ const RegisterPage = () => {
       })
 
       // handle successful response
-      console.log(response.data)
+      const message = response.data
+      toast.success(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
       localStorage.setItem('token', response.data.token)
 
       setToken(response.data.token)
       router.push('/pages/login', null, { shallow: true })
     } catch (error) {
       // handle error response
-      console.error(error)
+      const message = error.response.data
+      toast.warn(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
     }
   }
 
@@ -250,6 +264,7 @@ const RegisterPage = () => {
                 </Fragment>
               }
             />
+
             <Button
               fullWidth
               size='large'
