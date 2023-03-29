@@ -1,6 +1,9 @@
 // ** Next Imports
 import Head from 'next/head'
-import { Router } from 'next/router'
+import router, { Router } from 'next/router'
+import React from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** Loader Import
 import NProgress from 'nprogress'
@@ -64,7 +67,11 @@ const App = props => {
       <SettingsProvider>
         <SettingsConsumer>
           {({ settings }) => {
-            return <ThemeComponent settings={settings}>{getLayout(<Component {...pageProps} />)}</ThemeComponent>
+            return (
+              <ThemeComponent settings={settings}>
+                {getLayout(<Component {...pageProps}> </Component>)} <ToastContainer />
+              </ThemeComponent>
+            )
           }}
         </SettingsConsumer>
       </SettingsProvider>
