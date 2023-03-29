@@ -24,14 +24,10 @@ import router from 'next/router'
 // import WeeklyOverview from 'src/views/dashboard/WeeklyOverview'
 // import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
+import checkToken from './checkToken'
 
 const Dashboard = () => {
-  useEffect(() => {
-    const tokenV = localStorage.getItem('token')
-    if (!tokenV) {
-      router.push('/pages/login', null, { shallow: true })
-    }
-  }, [])
+  checkToken()
 
   return (
     <ApexChartWrapper>
