@@ -68,7 +68,7 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
   }
 }))
 
-const TabAccount = () => {
+const TabPost = () => {
   checkToken()
 
   const { handleSubmit } = useForm({
@@ -142,4 +142,4 @@ const TabAccount = () => {
   )
 }
 
-export default TabAccount
+export default TabPost
