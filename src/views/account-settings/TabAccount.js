@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 // ** React Imports
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -54,34 +55,39 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 const TabAccount = () => {
   checkToken()
 
-  // ** State
-  const [values, setValues] = useState({})
-  const [firstName, setfirstName] = useState('')
-  const [middleName, setmiddleName] = useState('')
-  const [lastName, setlastName] = useState('')
-  const [userStatus, setuserStatus] = useState('ACTIVE')
-  const [countryCode, setcountryCode] = useState('')
-  const [phone, setphone] = useState('')
-  const [reset, setreset] = useState('')
-  const [saveChanges, setsaveChanges] = useState('')
-
   // ** Hook
   const theme = useTheme()
   const router = useRouter()
 
+  // ** State
+
+  const [reset, setreset] = useState('')
+  const [saveChanges, setsaveChanges] = useState('')
+
+  const [values, setValues] = useState({
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    userStatus: 'ACTIVE',
+    countryCode: false,
+    phone: false
+  })
+
   const handleSubmit = async event => {
     event.preventDefault()
 
-    const dataError = ''
+    const message = ''
     const userId = localStorage.getItem('userId')
     try {
+      const { firstName, middleName, lastName, userStatus, countryCode, phone } = values
+
       const response = await axiosInstance.patch(`user/${userId}/`, {
-        firstName,
-        middleName,
-        lastName,
-        userStatus,
-        countryCode,
-        phone
+        firstName: firstName,
+        middleName: middleName,
+        lastName: lastName,
+        userStatus: userStatus,
+        countryCode: countryCode,
+        phone: phone
       })
 
       // handle successful response
@@ -93,12 +99,11 @@ const TabAccount = () => {
         autoClose: 2000,
         hideProgressBar: true
       })
+      handleReset()
       router.push('/account-settings/', null, { shallow: true })
     } catch (error) {
       // handle error response
-      if (error.response.status === 401) {
-        router.push('/pages/login')
-      }
+      console.log(error)
       const message = error.response.data
       toast.warn(`${message}`, {
         position: toast.POSITION.TOP_RIGHT,
@@ -114,8 +119,7 @@ const TabAccount = () => {
 
   const handleReset = prop => event => {
     {
-      event.preventDefault()
-      event.target.reset()
+      setValues({ ...values, firstName: '', middleName: '', lastName: '', phone: '', countryCode: '', userStatus: '' })
     }
   }
 
@@ -128,42 +132,19 @@ const TabAccount = () => {
       <form noValidate autoComplete='off' onSubmit={handleSubmit}>
         <Grid container spacing={7}>
           <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label='First Name'
-              name='firstName'
-              onChange={e => setfirstName(e.target.value)}
-              placeholder='John'
-            />
+            <TextField fullWidth label='First Name' name='firstName' type={values.firstName} placeholder='John' />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label='Middle Name'
-              name='middleName'
-              onChange={e => setmiddleName(e.target.value)}
-              placeholder='William'
-            />
+            <TextField fullWidth label='Middle Name' name='middleName' type={values.middleName} placeholder='William' />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label='Last Name'
-              name='lastName'
-              onChange={e => setlastName(e.target.value)}
-              placeholder='Doe'
-            />
+            <TextField fullWidth label='Last Name' name='lastName' type={values.lastName} placeholder='Doe' />
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
-              <Select
-                label='User Status'
-                name='userStatus'
-                defaultValue='ACTIVE'
-                onChange={e => setuserStatus(e.target.value)}
-              >
+              <Select label='User Status' name='userStatus' defaultValue='ACTIVE' type={values.userStatus}>
                 <MenuItem value='ACTIVE'>Active</MenuItem>
                 <MenuItem value='INACTIVE'>Inactive</MenuItem>
                 <MenuItem value='PENDING'>Closed</MenuItem>
@@ -174,7 +155,8 @@ const TabAccount = () => {
             <TextField
               fullWidth
               type='number'
-              onChange={e => setcountryCode(e.target.value)}
+              // eslint-disable-next-line react/jsx-no-duplicate-props
+              type={values.countryCode}
               name='countryCode'
               placeholder='Country Code(977)'
             />
@@ -183,7 +165,7 @@ const TabAccount = () => {
             <TextField
               fullWidth
               type='text'
-              onChange={e => setphone(e.target.value)}
+              type={values.phone}
               label='Phone'
               name='phone'
               placeholder='(123) 456-7890'
