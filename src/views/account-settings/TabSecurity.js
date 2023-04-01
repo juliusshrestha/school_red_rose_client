@@ -52,7 +52,8 @@ const TabSecurity = () => {
       const response = await axiosInstance.patch(`auth/change-password/`, {
         userId: userId,
         oldPassword: currentPassword,
-        newPassword
+        newPassword: newPassword,
+        confirmNewPassword: confirmNewPassword
       })
 
       // handle successful response
@@ -65,17 +66,23 @@ const TabSecurity = () => {
       })
 
       router.push('/account-settings/', null, { shallow: true })
+      handleReset()
     } catch (error) {
       // handle error response
-      if (error.response.status === 401) {
-        router.push('/pages/login')
-      }
-      const message = error.response.data
-      toast.warn(`${message}`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-        hideProgressBar: true
-      })
+      const message = error.response.data.message
+      if (message === undefined) {
+        const message = error.response.data
+        toast.warn(`${message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+          hideProgressBar: true
+        })
+      } else
+        toast.warn(`${message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+          hideProgressBar: true
+        })
     }
   }
 
@@ -119,6 +126,10 @@ const TabSecurity = () => {
 
   const handleMouseDownConfirmNewPassword = event => {
     event.preventDefault()
+  }
+
+  const handleReset = props => event => {
+    setValues({ ...values, currentPassword: '', newPassword: '', confirmNewPassword: '' })
   }
 
   return (
@@ -217,12 +228,7 @@ const TabSecurity = () => {
           <Button variant='contained' type='submit' sx={{ marginRight: 3.5 }}>
             Save Changes
           </Button>
-          <Button
-            type='reset'
-            variant='outlined'
-            color='secondary'
-            onClick={() => setValues({ ...values, currentPassword: '', newPassword: '', confirmNewPassword: '' })}
-          >
+          <Button type='reset' variant='outlined' color='secondary' onClick={handleReset}>
             Reset
           </Button>
         </Box>
