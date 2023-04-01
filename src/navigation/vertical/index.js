@@ -27,6 +27,11 @@ const navigation = () => {
       title: 'Posts',
       icon: Post,
       path: '/post-update'
+    },
+    {
+      title: 'Gallery',
+      icon: Post,
+      path: '/gallery'
     }
 
     // {
