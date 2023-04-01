@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   }
 })
 
-axiosInstance.interceptors.response.use(
+axiosInstance.interceptors.request.use(
   config => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -19,6 +19,7 @@ axiosInstance.interceptors.response.use(
     return config
   },
   error => {
+    console.log(error)
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token')
     }
