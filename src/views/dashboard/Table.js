@@ -12,7 +12,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TrendingUp from 'mdi-material-ui/TrendingUp'
 import axiosInstance from '../../axios/axiosInstance'
 import { useState, useEffect } from 'react'
-import { getBlogsData } from '../../axios/context/getBlogDetails'
+import { getCompData } from '../../axios/context/getCompDetails'
 
 // const rows = [
 //   {
@@ -98,7 +98,7 @@ const DashboardTable = () => {
   const [rows, setRows] = useState([])
 
   useEffect(() => {
-    getBlogsData()
+    getCompData()
       .then(data => {
         // console.log('blog data received ->', data)
         setRows(data.data)
