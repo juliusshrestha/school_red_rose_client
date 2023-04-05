@@ -65,7 +65,6 @@ const TabSecurity = () => {
         hideProgressBar: true
       })
 
-      router.push('/account-settings/', null, { shallow: true })
       handleReset()
     } catch (error) {
       // handle error response
@@ -128,7 +127,8 @@ const TabSecurity = () => {
     event.preventDefault()
   }
 
-  const handleReset = props => event => {
+  const handleReset = event => {
+    console.log(event)
     setValues({ ...values, currentPassword: '', newPassword: '', confirmNewPassword: '' })
   }
 
