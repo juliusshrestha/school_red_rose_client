@@ -69,8 +69,8 @@ const TabAccount = () => {
     middleName: '',
     lastName: '',
     userStatus: 'ACTIVE',
-    countryCode: false,
-    phone: false
+    countryCode: '',
+    phone: ''
   })
 
   const handleSubmit = async event => {
@@ -100,7 +100,6 @@ const TabAccount = () => {
         hideProgressBar: true
       })
       handleReset()
-      router.push('/account-settings/', null, { shallow: true })
     } catch (error) {
       // handle error response
       console.log(error)
@@ -113,11 +112,12 @@ const TabAccount = () => {
     }
   }
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
+  const handleChange = event => {
+    console.log(event)
+    setValues({ ...values, [event.target.name]: event.target.value })
   }
 
-  const handleReset = prop => event => {
+  const handleReset = event => {
     {
       setValues({ ...values, firstName: '', middleName: '', lastName: '', phone: '', countryCode: '', userStatus: '' })
     }
@@ -132,19 +132,46 @@ const TabAccount = () => {
       <form noValidate autoComplete='off' onSubmit={handleSubmit}>
         <Grid container spacing={7}>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='First Name' name='firstName' type={values.firstName} placeholder='John' />
+            <TextField
+              fullWidth
+              label='First Name'
+              name='firstName'
+              value={values.firstName}
+              onChange={handleChange}
+              placeholder='John'
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='Middle Name' name='middleName' type={values.middleName} placeholder='William' />
+            <TextField
+              fullWidth
+              label='Middle Name'
+              name='middleName'
+              value={values.middleName}
+              onChange={handleChange}
+              placeholder='William'
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='Last Name' name='lastName' type={values.lastName} placeholder='Doe' />
+            <TextField
+              fullWidth
+              label='Last Name'
+              name='lastName'
+              value={values.lastName}
+              onChange={handleChange}
+              placeholder='Doe'
+            />
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
-              <Select label='User Status' name='userStatus' defaultValue='ACTIVE' type={values.userStatus}>
+              <Select
+                label='User Status'
+                name='userStatus'
+                defaultValue='ACTIVE'
+                onChange={handleChange}
+                value={values.userStatus}
+              >
                 <MenuItem value='ACTIVE'>Active</MenuItem>
                 <MenuItem value='INACTIVE'>Inactive</MenuItem>
                 <MenuItem value='PENDING'>Closed</MenuItem>
@@ -156,8 +183,9 @@ const TabAccount = () => {
               fullWidth
               type='number'
               // eslint-disable-next-line react/jsx-no-duplicate-props
-              type={values.countryCode}
+              value={values.countryCode}
               name='countryCode'
+              onChange={handleChange}
               placeholder='Country Code(977)'
             />
           </Grid>
@@ -165,7 +193,8 @@ const TabAccount = () => {
             <TextField
               fullWidth
               type='text'
-              type={values.phone}
+              value={values.phone}
+              onChange={handleChange}
               label='Phone'
               name='phone'
               placeholder='(123) 456-7890'
