@@ -102,7 +102,7 @@ const TabAccount = () => {
       handleReset()
     } catch (error) {
       // handle error response
-      console.log(error)
+    //  console.log(error)
       const message = error.response.data
       toast.warn(`${message}`, {
         position: toast.POSITION.TOP_RIGHT,
