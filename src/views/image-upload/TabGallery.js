@@ -147,6 +147,8 @@ const TabGallery = () => {
 
     return false
   }, [files, selectedAlbum])
+
+  // console.log(files)
   useEffect(() => {
     // Apply the styling to the Dropzone component
     setDropzoneStyle({
@@ -166,8 +168,9 @@ const TabGallery = () => {
     event.preventDefault()
 
     try {
-      let formData = new FormData()
+      const formData = new FormData()
       formData.append('albumId', selectedAlbum)
+      console.log(files)
       for (let i = 0; i < files.length; i++) {
         console.log(files[i])
         formData.append('fileNames', files[i])
@@ -182,11 +185,7 @@ const TabGallery = () => {
         autoClose: 2000,
         hideProgressBar: true
       })
-      formData = undefined
-
-      router.push('gallery/')
-
-      console.log(response)
+      handleResetAll()
     } catch (error) {
       // Sends error to the client side
       console.log(error)
@@ -277,14 +276,7 @@ const TabGallery = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Button
-              type='submit'
-              onClick={handleResetAll}
-              style={{ marginTop: '15px' }}
-              disabled={isDisabled}
-              variant='contained'
-              size='large'
-            >
+            <Button type='submit' style={{ marginTop: '15px' }} disabled={isDisabled} variant='contained' size='large'>
               Submit
             </Button>
           </Grid>
