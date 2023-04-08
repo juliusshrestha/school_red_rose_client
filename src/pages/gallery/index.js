@@ -1,5 +1,6 @@
 // ** React Imports
 import { useState } from 'react'
+import React from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -43,48 +44,56 @@ const TabName = styled('span')(({ theme }) => ({
 const Gallery = () => {
   // ** State
   const [value, setValue] = useState('album')
+  const [selectedAlbum, setSelectedAlbum] = useState('')
   const message = ''
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
 
+  const handleTabChange = (newValue, album) => {
+    setValue(newValue)
+    setSelectedAlbum(album)
+  }
+
   return (
-    <Card>
-      <TabContext value={value}>
-        <TabList
-          onChange={handleChange}
-          aria-label='post-upload tabs'
-          sx={{ borderBottom: theme => `1px solid ${theme.palette.divider}` }}
-        >
-          {' '}
-          <Tab
-            value='album'
-            label={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Post />
-                <TabName>Creat your ALbums</TabName>
-              </Box>
-            }
-          />
-          <Tab
-            value='photo'
-            label={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Post />
-                <TabName>Post your Photos</TabName>
-              </Box>
-            }
-          />
-        </TabList>
-        <TabPanel sx={{ p: 0 }} value='album'>
-          <TabAlbum />
-        </TabPanel>
-        <TabPanel sx={{ p: 0 }} value='photo'>
-          <TabGallery />
-        </TabPanel>
-      </TabContext>
-    </Card>
+    <React.StrictMode>
+      <Card>
+        <TabContext value={value}>
+          <TabList
+            onChange={handleChange}
+            aria-label='post-upload tabs'
+            sx={{ borderBottom: theme => `1px solid ${theme.palette.divider}` }}
+          >
+            {' '}
+            <Tab
+              value='album'
+              label={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Post />
+                  <TabName>Create your ALbums</TabName>
+                </Box>
+              }
+            />
+            <Tab
+              value='photo'
+              label={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Post />
+                  <TabName>Post your Photos</TabName>
+                </Box>
+              }
+            />
+          </TabList>
+          <TabPanel sx={{ p: 0 }} value='album'>
+            <TabAlbum onTabChange={handleTabChange} />
+          </TabPanel>
+          <TabPanel sx={{ p: 0 }} value='photo'>
+            <TabGallery existingAlbum={selectedAlbum} />
+          </TabPanel>
+        </TabContext>
+      </Card>
+    </React.StrictMode>
   )
 }
 
