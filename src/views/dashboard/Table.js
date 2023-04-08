@@ -126,8 +126,8 @@ const DashboardTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {Array.from(rows).map(element => (
-              <TableRow hover key={element.title} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
+            {Array.from(rows).map((element ,index)=> (
+              <TableRow hover key={element.title+index} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
                 <TableCell sx={{ py: theme => `${theme.spacing(0.5)} !important` }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Typography sx={{ fontWeight: 500, fontSize: '0.875rem !important' }}>{element.title}</Typography>
