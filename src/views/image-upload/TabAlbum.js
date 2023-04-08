@@ -3,8 +3,10 @@
 import React from 'react'
 import { useCallback, useEffect, useState, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
-
+import { useContext } from 'react'
 import { useRouter } from 'next/router'
+
+import TabContext from '@mui/lab/TabContext'
 
 // ** MUI Imports
 
@@ -34,8 +36,9 @@ import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 import { CardActionArea } from '@mui/material'
 import Card from '@mui/material/Card'
-
+import Link from '@mui/material/Link'
 import CardMedia from '@mui/material/CardMedia'
+import CardActions from '@mui/material/CardActions'
 import axiosInstance from '../../axios/axiosInstance'
 import { getAlbumDetails } from 'src/axios/context/getAlbumDetails'
 import checkToken from 'src/pages/checkToken'
@@ -87,7 +90,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TabGallery = () => {
+const TabGallery = ({ onTabChange }) => {
   checkToken()
 
   // ** Hook
@@ -98,9 +101,10 @@ const TabGallery = () => {
 
   // ** State
   const [values, setValues] = useState({ albumName: '', desc: '' })
-  const [album, setAlbum] = useState({})
+  const [album, setAlbum] = useState([])
   const [reset, setreset] = useState('')
   const [saveChanges, setsaveChanges] = useState('')
+  const value = useContext(TabContext)
 
   const message = ''
   useEffect(() => {
@@ -134,16 +138,18 @@ const TabGallery = () => {
         hideProgressBar: true
       })
 
+      // router.push('/gallery', null, (shallow = true))
       handleResetAll()
     } catch (error) {
       // Sends error to the client side
-      console.log(error.response)
-      const message = error.response.data
-      toast.warn(`${message}`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 2000,
-        hideProgressBar: true
-      })
+      if (error) {
+        const message = error.response.data
+        toast.warn(`${message}`, {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 2000,
+          hideProgressBar: true
+        })
+      }
     }
   }
 
@@ -153,6 +159,10 @@ const TabGallery = () => {
 
   const handleResetAll = event => {
     setValues({ ...values, albumName: '', desc: '' })
+  }
+
+  const handleAdd = album => {
+    onTabChange('photo', album)
   }
 
   return (
@@ -191,20 +201,32 @@ const TabGallery = () => {
       </form>
       <h2>Albums</h2>
       <Grid container spacing={2} sx={{ paddingTop: '16px' }}>
-        {Array.from(album).map(album => (
-          <Grid item xs={12} sm={3} key={album.albumId}>
+        {album.map(eachAlbum => (
+          <Grid item xs={12} sm={3} key={eachAlbum.albumId}>
             <Card sx={{ maxWidth: 345 }}>
               <CardActionArea>
-                <CardMedia component='img' height='140' image={album.image} alt={album.title} />
+                <CardMedia
+                  component='img'
+                  height='140'
+                  image={`http://localhost:3000/${eachAlbum?.tblPhoto[0]?.fileNames}`}
+                  alt={album.title}
+                />
                 <CardContent>
                   <Typography gutterBottom variant='h5' component='div'>
-                    {album.albumName}
+                    {eachAlbum.albumName}
+                  </Typography>
+
+                  <Typography variant='body2' color='text.secondary'>
+                    Photos: {eachAlbum?.tblPhoto.length}
                   </Typography>
                   <Typography variant='body2' color='text.secondary'>
-                    {album.desc}
+                    {eachAlbum.desc}
                   </Typography>
                 </CardContent>
               </CardActionArea>
+              <Button onClick={() => handleAdd(eachAlbum)} size='small'>
+                Add +
+              </Button>
             </Card>
           </Grid>
         ))}
