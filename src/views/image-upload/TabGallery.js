@@ -4,6 +4,7 @@ import React from 'react'
 import { useCallback, useEffect, useState, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 import router from 'next/router'
+import TabContext from '@mui/lab/TabContext'
 
 // ** MUI Imports
 
@@ -128,7 +129,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const TabGallery = () => {
+const TabGallery = ({ onTabChange, existingAlbum }) => {
   checkToken()
 
   const classes = useStyles()
@@ -136,13 +137,22 @@ const TabGallery = () => {
   // ** State
   const [dropzoneStyle, setDropzoneStyle] = useState({})
   const [isDragging, setIsDragging] = useState(false)
-  const [files, setFiles] = useState([])
+
   const [selectedAlbum, setSelectedAlbum] = useState('')
   const [albumCategories, setAlbumCategories] = useState([])
+  const [files, setFiles] = useState([])
+
   const message = ''
+  useEffect(() => {
+    if (existingAlbum) {
+      setAlbumCategories([existingAlbum])
+      setSelectedAlbum(existingAlbum.albumId)
+    }
+  }, [existingAlbum])
 
   const isDisabled = useMemo(() => {
-    if (!files) return true
+    console.log(files)
+    if (files.length < 1) return true
     if (!selectedAlbum) return true
 
     return false
@@ -214,6 +224,7 @@ const TabGallery = () => {
   }
 
   const handleAlbumChange = event => {
+    console.log(event.target.value)
     setSelectedAlbum(event.target.value)
   }
 
@@ -257,23 +268,23 @@ const TabGallery = () => {
           </Grid>
 
           <Grid item xs={12}>
-            <FormControl variant='outlined' fullWidth>
-              <InputLabel id='demo-simple-select-label'>Album Name</InputLabel>
-              <Select
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
-                style={{ width: '100%' }}
-                label='Album Name'
-                value={selectedAlbum}
-                onChange={handleAlbumChange}
-              >
-                {albumCategories.map(album => (
-                  <MenuItem key={album.albumId} value={album.albumId}>
-                    {album.albumName}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            {/* <FormControl variant='outlined' fullWidth> */}
+            <InputLabel id='demo-simple-select-label'>Album Name</InputLabel>
+            <Select
+              labelId='demo-simple-select-label'
+              id='demo-simple-select'
+              style={{ width: '100%' }}
+              label='Album Name'
+              value={selectedAlbum}
+              onChange={handleAlbumChange}
+            >
+              {albumCategories.map(album => (
+                <MenuItem key={album.albumId} value={album.albumId}>
+                  {album.albumName}
+                </MenuItem>
+              ))}
+            </Select>
+            {/* </FormControl> */}
           </Grid>
           <Grid item xs={12}>
             <Button type='submit' style={{ marginTop: '15px' }} disabled={isDisabled} variant='contained' size='large'>
