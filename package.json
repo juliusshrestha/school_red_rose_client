@@ -94,6 +94,7 @@
     "request": "^2.88.2",
     "slate": "^0.91.4",
     "slate-react": "^0.92.0",
+    "suneditor-react": "^3.4.1",
     "tinymce": "^6.4.0",
     "yarn": "^1.22.19"
   },
