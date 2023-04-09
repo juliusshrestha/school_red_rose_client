@@ -151,14 +151,14 @@ const TabGallery = ({ onTabChange, existingAlbum }) => {
   }, [existingAlbum])
 
   const isDisabled = useMemo(() => {
-    console.log(files)
+  
     if (files.length < 1) return true
     if (!selectedAlbum) return true
 
     return false
   }, [files, selectedAlbum])
 
-  // console.log(files)
+
   useEffect(() => {
     // Apply the styling to the Dropzone component
     setDropzoneStyle({
@@ -180,7 +180,7 @@ const TabGallery = ({ onTabChange, existingAlbum }) => {
     try {
       const formData = new FormData()
       formData.append('albumId', selectedAlbum)
-      console.log(files)
+     
       for (let i = 0; i < files.length; i++) {
         console.log(files[i])
         formData.append('fileNames', files[i])
@@ -198,7 +198,7 @@ const TabGallery = ({ onTabChange, existingAlbum }) => {
       handleResetAll()
     } catch (error) {
       // Sends error to the client side
-      console.log(error)
+     
       const message = error.response
       toast.warn(`${message}`, {
         position: toast.POSITION.TOP_RIGHT,

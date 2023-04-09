@@ -27,13 +27,14 @@ import EmailOutline from 'mdi-material-ui/EmailOutline'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
 import MessageOutline from 'mdi-material-ui/MessageOutline'
 
-import Editor from '../../@core/layouts/components/editor/editor'
-
 import axiosInstance from '../../axios/axiosInstance'
 import checkToken from 'src/pages/checkToken'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
+
+// import SunEditor from 'suneditor-react'
+// import plugins from 'suneditor/src/plugins'
 
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
@@ -71,48 +72,79 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 const TabPost = () => {
   checkToken()
 
-  const { handleSubmit } = useForm({
-    mode: 'onBlur'
-  })
-
   // ** State
-  const [isChecked, setIsChecked] = useState(false)
+
   const classes = useStyles()
 
-  const addAccount = async data => {
+  const [title, setTitle] = useState('')
+  const [contentType, setContentType] = useState('')
+  const [editor, setEditor] = useState([])
+  const [popUp, setpopUp] = useState(false)
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+
     try {
-      const response = await axiosInstance.post('/comp', data)
-      console.log(response.data)
-      reset()
+      const formData = new FormData()
+      formData.append('title', title)
+      formData.append('contentType', contentType)
+      formData.append('files', files)
+      formData.append('popUp', popUp)
+      console.log(files)
+      for (let i = 0; i < files.length; i++) {
+        console.log(files[i])
+        formData.append('fileNames', files[i])
+      }
+
+      const response = await axiosInstance.post('/comp', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+      const message = response.data
+      toast.success(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
+      handleResetAll()
     } catch (error) {
       // Sends error to the client side
-      response.status(error.response.status).send(error.response.data)
+      console.log(error)
+      const message = error.response
+      toast.warn(`${message}`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+        hideProgressBar: true
+      })
     }
   }
 
-  const handleChange = event => {
-    setIsChecked(event.target.checked)
+  const handleChangeTitle = event => {
+    setTitle(event.target.value)
+  }
+
+  const handleChangeContent = event => {
+    setContentType(event.target.value)
+  }
+
+  const handleChangeEditor = event => {
+    setEditor(event.target.value)
+  }
+
+  const handleChangePopUp = event => {
+    setpopUp(event.target.checked)
   }
 
   return (
     <CardContent>
-      <form onSubmit={handleSubmit(addAccount)}>
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={7}>
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label='Title'
-              placeholder='Leonard Carter'
-              name='title'
-              InputProps={{
-                startAdornment: <InputAdornment position='start'></InputAdornment>
-              }}
-            />
+            <TextField fullWidth label='Title' placeholder='Leonard Carter' name='title' onChange={handleChangeTitle} />
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
               <InputLabel>Content Type</InputLabel>
-              <Select name='compCategory' label='compCategory' defaultValue='notice'>
+              <Select name='compCategory' label='compCategory' onChange={handleChangeContent} defaultValue='notice'>
                 <MenuItem value='notice'>Notice</MenuItem>
                 <MenuItem value='news'>News</MenuItem>
                 <MenuItem value='download'>Download</MenuItem>
@@ -121,12 +153,10 @@ const TabPost = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12}>
-            <Editor />
-          </Grid>
+          <Grid item xs={12}></Grid>
           <Grid item xs={12} marginTop='30px'>
             <FormControlLabel
-              control={<Checkbox checked={isChecked} onChange={handleChange} color='primary' />}
+              control={<Checkbox checked={popUp} onChange={handleChangePopUp} color='primary' />}
               label='Pop Up'
               name='popUp'
             />

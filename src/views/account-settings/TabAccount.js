@@ -102,7 +102,7 @@ const TabAccount = () => {
       handleReset()
     } catch (error) {
       // handle error response
-    //  console.log(error)
+      //  console.log(error)
       const message = error.response.data
       toast.warn(`${message}`, {
         position: toast.POSITION.TOP_RIGHT,
@@ -184,6 +184,7 @@ const TabAccount = () => {
               type='number'
               // eslint-disable-next-line react/jsx-no-duplicate-props
               value={values.countryCode}
+              label='Country Code'
               name='countryCode'
               onChange={handleChange}
               placeholder='Country Code(977)'
