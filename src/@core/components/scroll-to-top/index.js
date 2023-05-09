@@ -21,9 +21,11 @@ const ScrollToTop = props => {
   })
 
   const handleClick = () => {
-    const anchor = document.querySelector('body')
-    if (anchor) {
-      anchor.scrollIntoView({ behavior: 'smooth' })
+    if (document) {
+      const anchor = document.querySelector('body')
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 

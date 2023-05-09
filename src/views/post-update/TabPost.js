@@ -18,6 +18,8 @@ import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import { useForm } from 'react-hook-form'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // ** Icons Imports
 import InputAdornment from '@mui/material/InputAdornment'
@@ -32,6 +34,7 @@ import checkToken from 'src/pages/checkToken'
 
 // ** Icons Imports
 import Close from 'mdi-material-ui/Close'
+import Editor from 'src/views/post-update/editor'
 
 // import SunEditor from 'suneditor-react'
 // import plugins from 'suneditor/src/plugins'
@@ -54,8 +57,7 @@ const useStyles = makeStyles({
   checkboxContainer: {
     display: 'flex',
     alignItems: 'center',
-
-    margin: '10px 0'
+    margin: '0'
   }
 })
 
@@ -71,14 +73,15 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 
 const TabPost = () => {
   checkToken()
+  console.log(this)
 
   // ** State
 
   const classes = useStyles()
 
   const [title, setTitle] = useState('')
-  const [contentType, setContentType] = useState('')
-  const [editor, setEditor] = useState([])
+  const [compCategory, setCompCategory] = useState('')
+  const [desc, setDesc] = useState('')
   const [popUp, setpopUp] = useState(false)
 
   const handleSubmit = async event => {
@@ -87,14 +90,9 @@ const TabPost = () => {
     try {
       const formData = new FormData()
       formData.append('title', title)
-      formData.append('contentType', contentType)
-      formData.append('files', files)
+      formData.append('compCategory', compCategory)
+      formData.append('desc', desc)
       formData.append('popUp', popUp)
-      console.log(files)
-      for (let i = 0; i < files.length; i++) {
-        console.log(files[i])
-        formData.append('fileNames', files[i])
-      }
 
       const response = await axiosInstance.post('/comp', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
@@ -123,15 +121,23 @@ const TabPost = () => {
   }
 
   const handleChangeContent = event => {
-    setContentType(event.target.value)
+    setCompCategory(event.target.value)
   }
 
-  const handleChangeEditor = event => {
-    setEditor(event.target.value)
+  const handleChangeDesc = event => {
+    setDesc(event)
+    console.log(event)
   }
 
   const handleChangePopUp = event => {
-    setpopUp(event.target.checked)
+    setpopUp(true)
+  }
+
+  const handleResetAll = event => {
+    setTitle('')
+    setCompCategory('')
+    setDesc('')
+    setpopUp(false)
   }
 
   return (
@@ -144,19 +150,21 @@ const TabPost = () => {
           <Grid item xs={12}>
             <FormControl fullWidth>
               <InputLabel>Content Type</InputLabel>
-              <Select name='compCategory' label='compCategory' onChange={handleChangeContent} defaultValue='notice'>
-                <MenuItem value='notice'>Notice</MenuItem>
-                <MenuItem value='news'>News</MenuItem>
-                <MenuItem value='download'>Download</MenuItem>
-                <MenuItem value='gallery'>Gallery</MenuItem>
-                <MenuItem value='events'>Events</MenuItem>
+              <Select name='compCategory' label='compCategory' onChange={handleChangeContent} defaultValue='NOTICE'>
+                <MenuItem value='NOTICE'>Notice</MenuItem>
+                <MenuItem value='NEWS'>News</MenuItem>
+                <MenuItem value='DOWNLOAD'>Download</MenuItem>
+                <MenuItem value='GALLERY'>Gallery</MenuItem>
+                <MenuItem value='EVENT'>Events</MenuItem>
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12}></Grid>
-          <Grid item xs={12} marginTop='30px'>
+          <Grid item xs={12}>
+            <Editor id='desc' label='desc' contentType={desc} setContentType={handleChangeDesc} />
+          </Grid>
+          <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox checked={popUp} onChange={handleChangePopUp} color='primary' />}
+              control={<Checkbox onChange={handleChangePopUp} color='primary' />}
               label='Pop Up'
               name='popUp'
             />

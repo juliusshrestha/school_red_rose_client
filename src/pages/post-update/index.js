@@ -42,6 +42,8 @@ const TabName = styled('span')(({ theme }) => ({
 }))
 
 const AccountSettings = () => {
+  console.log(this)
+  
   // ** State
   const [value, setValue] = useState('account')
   const message = ''

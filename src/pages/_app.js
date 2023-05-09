@@ -47,6 +47,7 @@ if (themeConfig.routingLoader) {
 
 // ** Configure JSS & ClassName
 const App = props => {
+  // debugger
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
   // Variables
