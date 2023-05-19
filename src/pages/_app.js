@@ -52,6 +52,7 @@ const App = props => {
 
   // Variables
   const getLayout = Component.getLayout ?? (page => <UserLayout>{page}</UserLayout>)
+  console.log('reached here on app')
 
   return (
     <CacheProvider value={emotionCache}>

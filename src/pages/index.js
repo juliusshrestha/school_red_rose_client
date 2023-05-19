@@ -8,7 +8,7 @@ import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 import BriefcaseVariantOutline from 'mdi-material-ui/BriefcaseVariantOutline'
 
 // ** Custom Components Imports
-import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
+// import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
 
 // ** Styled Component Import
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
@@ -23,10 +23,11 @@ import router from 'next/router'
 // import DepositWithdraw from 'src/views/dashboard/DepositWithdraw'
 // import SalesByCountries from 'src/views/dashboard/SalesByCountries'
 import checkToken from './checkToken'
+import theme from 'src/theme'
 
-const Dashboard = () => {
+const Dashboard = ({ themesettings }) => {
   checkToken()
-
+  console.log(themesettings)
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
@@ -95,10 +96,11 @@ const Dashboard = () => {
           <DepositWithdraw />
         </Grid> */}
         <Grid item xs={12}>
-          <Table />
+          {/* <Table /> */}
         </Grid>
       </Grid>
     </ApexChartWrapper>
+    // </ThemeComponent>
   )
 }
 

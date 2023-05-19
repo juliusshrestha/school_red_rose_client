@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+
 // import { useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 export const Search = () => {
 	const classes = useStyles();
 	const search = 'search';
+
 	const [appState, setAppState] = useState({
 		search: '',
 		posts: [],
@@ -50,6 +52,7 @@ export const Search = () => {
 		axiosInstance.get(search + '/' + window.location.search).then((res) => {
 			const allPosts = res.data;
 			setAppState({ posts: allPosts });
+
 			//console.log(res.data);
 		});
 	}, [setAppState]);
@@ -60,6 +63,7 @@ export const Search = () => {
 				<Grid container spacing={5} alignItems="flex-end">
 					{appState.posts.map((post) => {
 						return (
+
 							// Enterprise card is full width at sm breakpoint
 							<Grid item key={post.id} xs={12} md={4}>
 								<Card className={classes.card}>
@@ -98,4 +102,5 @@ export const Search = () => {
 		</React.Fragment>
 	);
 };
+
 export default Search;
