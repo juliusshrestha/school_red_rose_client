@@ -23,13 +23,13 @@ function IndexPage() {
         <VideoProvider>
           <Layout>
             <SEO description='Website' title='Red Rose English Boarding School' />
-            <Banner />
-            <FavoriteCourse />
-            <CtaThree />
+            <Banner /><br></br>
+            {/* <FavoriteCourse /> */}
+            {/* <CtaThree /> */}
             <PopularCourse />
-            <WorkFlow />
+            {/* <WorkFlow /> */}
             <Pricing />
-            <CtaTwo />
+            {/* <CtaTwo /> */}
             <FAQ />
             <CtaOne />
             <Modal />

@@ -80,6 +80,8 @@ const styles = {
   },
   nav: {
     mx: 'auto',
+    // display: 'flex',
+    // justifyContent/7: 'space-evenly',
     '@media screen and (max-width: 991px)': {
       display: 'none'
     },

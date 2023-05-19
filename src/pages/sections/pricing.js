@@ -146,44 +146,64 @@ const pricingYearlyData = [
 
 const Pricing = () => {
   const [plan, setPlan] = useState(false)
+  const imageUrls = [
+    'https://images.unsplash.com/photo-1684457718008-d561d76dfbb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=378&q=80',
+    'https://images.unsplash.com/photo-1684318551812-63d888cce300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
+  ];
 
   return (
-    <Box as='section' id='pricing' sx={styles.pricing}>
-      <Container>
-        <BlockTitle sx={styles.pricing.blockTitle} tagline='Pricing Plan' heading='Choose your pricing policy' />
-        <Box sx={styles.pricing.btnWrap}>
-          <Box as='ul' sx={styles.pricing.btnUl}>
-            <Box
-              as='li'
-              className={` ${plan === false ? 'active' : ''}`}
-              variant='buttons.primary'
-              sx={styles.pricing.btn}
-              onClick={() => {
-                setPlan(false)
-              }}
-            >
-              Monthly Plan
-            </Box>
-            <Box
-              as='li'
-              className={` ${plan === true ? 'active' : ''}`}
-              variant='buttons.primary'
-              sx={styles.pricing.btn}
-              onClick={() => {
-                setPlan(true)
-              }}
-            >
-              Annual Plan
-            </Box>
-          </Box>
-        </Box>
+<box>
+ <BlockTitle sx={styles.pricing.blockTitle} tagline='Activities' heading='Our Gallery' />
+<Grid>
+    <div className="gallery" style={{display: 'flex'}}>
+    {imageUrls.map((imageUrl, index) => (
+      // <img key={index} src={imageUrl} height = "30%" width = "50%" alt={`Image ${index + 1}`} />
+      <div style = {{background: `url(${imageUrl})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      width: '50%',
+      height: '300px'}}></div>
+    ))}
+  </div>
+  </Grid>
+  </box>
+    // <Box as='section' id='pricing' sx={styles.pricing}>
+    //   <Container>
+    //     <BlockTitle sx={styles.pricing.blockTitle} tagline='Pricing Plan' heading='Choose your pricing policy' />
+    //     <Box sx={styles.pricing.btnWrap}>
+    //       <Box as='ul' sx={styles.pricing.btnUl}>
+    //         <Box
+    //           as='li'
+    //           className={` ${plan === false ? 'active' : ''}`}
+    //           variant='buttons.primary'
+    //           sx={styles.pricing.btn}
+    //           onClick={() => {
+    //             setPlan(false)
+    //           }}
+    //         >
+    //           Monthly Plan
+    //         </Box>
+    //         <Box
+    //           as='li'
+    //           className={` ${plan === true ? 'active' : ''}`}
+    //           variant='buttons.primary'
+    //           sx={styles.pricing.btn}
+    //           onClick={() => {
+    //             setPlan(true)
+    //           }}
+    //         >
+    //           Annual Plan
+    //         </Box>
+    //       </Box>
+    //     </Box>
 
-        <Grid sx={styles.pricing.wrapper}>
-          {plan === true ? pricingYearlyData.map((price, index) => <PriceCard key={index} data={price} />) : null}
-          {plan === false ? pricingMonthlyData.map((price, index) => <PriceCard key={index} data={price} />) : null}
-        </Grid>
-      </Container>
-    </Box>
+    //     <Grid sx={styles.pricing.wrapper}>
+    //       {plan === true ? pricingYearlyData.map((price, index) => <PriceCard key={index} data={price} />) : null}
+    //       {plan === false ? pricingMonthlyData.map((price, index) => <PriceCard key={index} data={price} />) : null}
+    //     </Grid>
+    //   </Container>
+    // </Box>
   )
 }
 

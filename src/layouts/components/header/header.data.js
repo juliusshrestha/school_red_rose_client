@@ -1,18 +1,18 @@
 export default [
   {
     path: 'banner',
-    label: 'Home',
+    label: 'Home ',
   },
   {
     path: 'courses',
-    label: 'About',
+    label: 'About ',
   },
   {
     path: 'pricing',
-    label: 'Photos',
+    label: 'Photos ',
   },
   {
     path: 'faq',
-    label: 'FAQs',
+    label: 'FAQs ',
   },
 ];

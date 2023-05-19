@@ -57,6 +57,7 @@ const accordionData = [
 const FAQ = () => {
   return (
     <Box as='section' id='faq' sx={styles.accordion}>
+      <br></br>
       <Container sx={styles.accordion.container}>
         <BlockTitle sx={styles.accordion.blockTitle} tagline='Frequent Question' heading='Do you have any question?' />
         <Accordion items={accordionData} />
