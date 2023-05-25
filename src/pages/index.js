@@ -28,7 +28,8 @@ import theme from 'src/theme'
 const Dashboard = ({ themesettings }) => {
   checkToken()
   console.log(themesettings)
-  return (
+  
+return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
         {/* <Grid item xs={12} md={4}>
@@ -96,10 +97,11 @@ const Dashboard = ({ themesettings }) => {
           <DepositWithdraw />
         </Grid> */}
         <Grid item xs={12}>
-          {/* <Table /> */}
+          <Table />
         </Grid>
       </Grid>
     </ApexChartWrapper>
+
     // </ThemeComponent>
   )
 }
