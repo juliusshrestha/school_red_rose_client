@@ -26,11 +26,11 @@ function IndexPage() {
             <Banner /><br></br>
             {/* <FavoriteCourse /> */}
             {/* <CtaThree /> */}
-            <PopularCourse />
+            <PopularCourse />  {/*About section*/}
             {/* <WorkFlow /> */}
-            <Pricing />
+            <Pricing /> {/*Gallery section*/}
             {/* <CtaTwo /> */}
-            <FAQ />
+            <FAQ /> {/*FAQ Section */}
             <CtaOne />
             <Modal />
           </Layout>

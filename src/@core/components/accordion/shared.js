@@ -58,9 +58,11 @@ const variants = {
   open: {
     // maxHeight: 200,
     height: 'auto',
-    marginBottom: 30
+    marginBottom: 30,
+    marginTop: 30,
+    display: "Block"
   },
-  closed: { height: 0, marginTop: 0, marginBottom: 0 }
+  closed: { height: 0, marginTop: 30, marginBottom: 30, display: 'none', }
 }
 
 export function AccordionContents({ isOpen, ...props }) {

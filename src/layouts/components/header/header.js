@@ -80,14 +80,15 @@ const styles = {
   },
   nav: {
     mx: 'auto',
-    // display: 'flex',
-    // justifyContent/7: 'space-evenly',
+    display: 'flex',
+    justifyContent: 'space-around',
     '@media screen and (max-width: 991px)': {
       display: 'none'
     },
     navLink: {
       fontSize: '16px',
       color: '#fff',
+      mx : '10px',
       fontWeight: '400',
       cursor: 'pointer',
       lineHeight: '1.2',
