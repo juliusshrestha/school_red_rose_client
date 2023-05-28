@@ -15,6 +15,7 @@ import Pricing from '../../sections/pricing'
 import PopularCourse from '../../sections/popular-course'
 import CtaThree from '../../sections/cta-three'
 import FavoriteCourse from '../../sections/favorite-course'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function IndexPage() {
   return (
@@ -26,13 +27,16 @@ function IndexPage() {
             <Banner /><br></br>
             {/* <FavoriteCourse /> */}
             {/* <CtaThree /> */}
-            <PopularCourse />  {/*About section*/}
+            {/* <PopularCourse />   */}
+            {/*About section*/}
             {/* <WorkFlow /> */}
-            <Pricing /> {/*Gallery section*/}
+            {/* <Pricing />  */}
+            {/*Gallery section*/}
             {/* <CtaTwo /> */}
-            <FAQ /> {/*FAQ Section */}
-            <CtaOne />
-            <Modal />
+            {/* <FAQ />  */}
+            {/*FAQ Section */}
+            {/* <CtaOne /> */}
+            {/* <Modal /> */}
           </Layout>
         </VideoProvider>
       </StickyProvider>
