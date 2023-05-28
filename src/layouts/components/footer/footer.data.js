@@ -50,27 +50,19 @@ export default [
     ],
   },
   {
-    header: 'My Account',
+    header: 'Quick Links',
     items: [
       {
         path: '/',
-        label: 'Press inquiries',
+        label: 'News',
       },
       {
         path: '/',
-        label: 'Social media ',
+        label: 'Notices',
       },
       {
         path: '/',
-        label: 'directories',
-      },
-      {
-        path: '/',
-        label: 'Images & B-roll',
-      },
-      {
-        path: '/',
-        label: 'Permissions',
+        label: 'Gallery',
       },
     ],
   },

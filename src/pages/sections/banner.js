@@ -4,7 +4,7 @@ import React from 'react'
 import VideoBtn from '../../@core/components/video-btn'
 import { FaStar } from 'react-icons/fa'
 import { IoIosSearch } from 'react-icons/io'
-import {Carousel} from 'react-bootstrap'
+import HeroSlider from '../sections/HeroSlider'
 import BannerBG from '@/assets/home/banner-bg-1-1.png'
 import BannerTextLine from '@/assets/home/banner-text-line.png'
 import BannerPattern from '@/assets/home/banner-pattern.png'
@@ -13,54 +13,37 @@ import BannerImage from '@/assets/home/banner-image-1.png'
 const Banner = () => {
 
 return(
-  <Carousel>
-
-
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://images.pexels.com/photos/14337862/pexels-photo-14337862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-
-
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://images.pexels.com/photos/16863602/pexels-photo-16863602/free-photo-of-heavy-snowfall-in-the-mountains.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt="Second slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-
-
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="https://images.pexels.com/photos/15925339/pexels-photo-15925339/free-photo-of-lonely-swan.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-      </p>
-    </Carousel.Caption>
-  </Carousel.Item>
-
-
-</Carousel>
-)
+  
+    <Box as='section' id='banner' sx={styles.banner}>
+      <Container sx={styles.banner.container}>
+        <Flex sx={styles.banner.row}>
+          <Box sx={styles.banner.col}>
+            <Box sx={styles.banner.content}>
+              <Heading as='h3'>
+                "Empowering<br />
+                tomorrow's Leaders"<br />
+                with Quality Education
+              </Heading>
+              <Text as='p'>
+                Get your blood tests delivered at let home collect sample <br />
+                from the victory of the managments that supplies best <br />
+                design system guidelines ever.
+              </Text>
+            </Box>
+          </Box>
+          <Box sx={styles.banner.col}>
+            <Box sx={styles.banner.imageBox}>
+              <Box sx={styles.banner.imageInner}>
+                {/* <Image src={BannerImage.src} alt='banner image' /> */}
+                <HeroSlider sx = {styles.HeroSlider}/>
+              </Box>
+            </Box>
+          </Box>
+        </Flex>
+      </Container>
+    </Box>
+  
+  )
 
 
 
@@ -117,6 +100,10 @@ const styles = {
     container: {
       maxWidth: ['100%', null, null, null, null, '1240px', '1440px']
     },
+    HeroSlider: {
+      z_index: 10000
+    },
+
     row: {
       flexWrap: 'wrap',
       display: 'flex',

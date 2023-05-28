@@ -12,7 +12,7 @@ export default function Footer() {
           <Box key={i} sx={styles.footer.widget}>
             <Heading sx={styles.footer.title}>{header}</Heading>
             {items.map(({ path, label }, i) => (
-              <Link sx={styles.footer.text} path={path} key={i} label={label} variant='footer' />
+              <div><Link sx={styles.footer.text} path={path} key={i} label={label} variant='footer' /></div>
             ))}
           </Box>
         ))}
