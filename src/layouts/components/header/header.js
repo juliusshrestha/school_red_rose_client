@@ -92,7 +92,7 @@ const styles = {
       fontWeight: '400',
       cursor: 'pointer',
       lineHeight: '1.2',
-      mr: '48px',
+      // mr: '48px',
       transition: '500ms',
       ':last-child': {
         mr: '0'

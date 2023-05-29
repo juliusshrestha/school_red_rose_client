@@ -7,7 +7,7 @@ const HeroSlider = () => {
     <Carousel fade>
 
 
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={5000}>
     <img
       className="d-block w-100"
       src="https://images.pexels.com/photos/14337862/pexels-photo-14337862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -20,7 +20,7 @@ const HeroSlider = () => {
   </Carousel.Item>
 
 
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={5000}>
     <img
       className="d-block w-100"
       src="https://images.pexels.com/photos/16863602/pexels-photo-16863602/free-photo-of-heavy-snowfall-in-the-mountains.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -34,7 +34,7 @@ const HeroSlider = () => {
   </Carousel.Item>
 
 
-  <Carousel.Item interval={1000}>
+  <Carousel.Item interval={5000}>
     <img
       className="d-block w-100"
       src="https://images.pexels.com/photos/15925339/pexels-photo-15925339/free-photo-of-lonely-swan.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
