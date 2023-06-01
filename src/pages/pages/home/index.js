@@ -17,6 +17,7 @@ import CtaThree from '../../sections/cta-three'
 import FavoriteCourse from '../../sections/favorite-course'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import TabNav from 'src/pages/sections/TabNav'
+import PrincipleMessage from 'src/pages/sections/PrincipleMessage'
 
 function IndexPage() {
   return (
@@ -27,6 +28,7 @@ function IndexPage() {
             <SEO description='Website' title='Red Rose English Boarding School' />
             <Banner /><br></br>
             {/* <FavoriteCourse /> */}
+            <PrincipleMessage/>
             {/* <CtaThree /> */}
             <PopularCourse />  
             {/*About section*/}

@@ -2,6 +2,8 @@ import { Box, Container } from 'theme-ui'
 import React from 'react'
 import BlockTitle from '../../@core/components/block-title'
 import PopularCard from '../../@core/components/popular-card'
+import LogoDark from '../../assets/home/logo.png'
+import { Image } from 'theme-ui'
 
 // const popularCourseData = [
 //   {
@@ -117,6 +119,7 @@ const PopularCourse = () => {
             />
           </Box>
         ))} */}
+        <Container sx = {styles.popularCourse.Container}>
         <Box>
           <p>Welcome to our school! We are dedicated to providing quality education and creating a nurturing environment for our students. With experienced teachers and a comprehensive curriculum, we strive to foster academic excellence and personal growth.
         </p>
@@ -130,6 +133,10 @@ const PopularCourse = () => {
           We are proud of our achievements and the success of our students. If you're looking for an educational institution that promotes excellence, growth, and a passion for learning, we invite you to join our school community.
         </p>
         </Box>
+        <Box>
+          <Image src={LogoDark} width= '100%'/>
+        </Box>
+      </Container>
       </Container>
     </Box>
   )
@@ -149,6 +156,9 @@ const styles = {
       '@media(max-width: 575px)': {
         marginBottom: '30px'
       }
+    },
+    Container:{
+      display: 'Flex',
     },
     col: {}
   }
