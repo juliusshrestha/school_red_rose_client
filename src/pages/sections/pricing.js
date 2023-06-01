@@ -232,7 +232,13 @@ const styles = {
       animationDuration: '1s'
     },
     blockTitle: {
-      textAlign: 'center'
+      textAlign: 'center',
+      marginTop: '60px',
+      marginBottom: '60px',
+      '@media(max-width: 575px)': {
+        marginBottom: '30px',
+        marginTop: '30px'
+      }
     },
     btnWrap: {
       display: 'flex',

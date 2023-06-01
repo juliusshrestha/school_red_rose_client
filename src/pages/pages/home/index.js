@@ -18,6 +18,7 @@ import FavoriteCourse from '../../sections/favorite-course'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import TabNav from 'src/pages/sections/TabNav'
 import PrincipleMessage from 'src/pages/sections/PrincipleMessage'
+import Mapp from 'src/pages/sections/Mapp'
 
 function IndexPage() {
   return (
@@ -41,6 +42,7 @@ function IndexPage() {
             {/*FAQ Section */}
             {/* <CtaOne /> */}
             {/* <Modal /> */}
+            <Mapp/>
           </Layout>
         </VideoProvider>
       </StickyProvider>
