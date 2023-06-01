@@ -101,7 +101,7 @@ const styles = {
       maxWidth: ['100%', null, null, null, null, '1240px', '1440px']
     },
     HeroSlider: {
-      z_index: 10000
+      z_index: 1
     },
 
     row: {
@@ -226,7 +226,9 @@ const styles = {
     imageBox: {
       display: 'flex',
       justifyContent: ['flex-start', null, null, 'flex-end'],
-      marginTop: ['60px', null, null, '0']
+      marginTop: ['60px', null, null, '0'],
+      zIndex: -1
+
     },
     imageInner: {
       position: 'relative',
@@ -239,7 +241,7 @@ const styles = {
         top: '30px',
         left: '30px',
         position: 'absolute',
-        zIndex: 2,
+        zIndex: 0,
         display: ['none', null, 'block'],
         '@media(max-width: 991px)': {
           left: '10px',
@@ -256,7 +258,7 @@ const styles = {
         top: '-30px',
         right: '-73px',
         position: 'absolute',
-        zIndex: 1,
+        zIndex: 0,
         '@media(max-width: 991px)': {
           right: '-10px'
         }

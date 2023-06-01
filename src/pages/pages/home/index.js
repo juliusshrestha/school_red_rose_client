@@ -32,7 +32,7 @@ function IndexPage() {
             {/*About section*/}
             <TabNav/>
             {/* <WorkFlow /> */}
-            {/* <Pricing />  */}
+            <Pricing /> 
             {/*Gallery section*/}
             {/* <CtaTwo /> */}
             {/* <FAQ />  */}
