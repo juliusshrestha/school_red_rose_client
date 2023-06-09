@@ -29,12 +29,12 @@ function IndexPage() {
             <SEO description='Website' title='Red Rose English Boarding School' />
             <Banner /><br></br>
             {/* <FavoriteCourse /> */}
-            <PrincipleMessage/>
             {/* <CtaThree /> */}
-            <PopularCourse />  
-            {/*About section*/}
+         
             <TabNav/>
             {/* <WorkFlow /> */}
+            <PopularCourse />  
+            {/*About section*/}
             <Pricing /> 
             {/*Gallery section*/}
             {/* <CtaTwo /> */}
@@ -42,7 +42,6 @@ function IndexPage() {
             {/*FAQ Section */}
             {/* <CtaOne /> */}
             {/* <Modal /> */}
-            <Mapp/>
           </Layout>
         </VideoProvider>
       </StickyProvider>

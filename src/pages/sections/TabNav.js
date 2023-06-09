@@ -1,6 +1,8 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import {ReactChild, useState} from 'react';
+import PrincipleMessage from './PrincipleMessage';
+import Contact from './Contact.js'
 
 function TabNav() {
   const [key, setKey] = useState('home');
@@ -11,17 +13,23 @@ function TabNav() {
       id="uncontrolled-tab-example"
       className="mb-3"
     >
-      <Tab eventKey="home" title="Home">
-        Tab content for Home
+      <Tab sx = {styles.tabstyle} eventKey="home" title="Home">
+        <PrincipleMessage/>
       </Tab>
-      <Tab eventKey="profile" title="Profile">
-        Tab content for Profile
+      <Tab sx = {styles.tabstyle} eventKey="Contact Us" title="Contact Us">
+        <Contact/>
       </Tab>
-      <Tab eventKey="contact" title="Contact">
+      <Tab sx = {styles.tabstyle} eventKey="contact" title="Contact">
         Tab content for Contact
       </Tab>
     </Tabs>
   );
+}
+
+const styles = {
+  tabstyle:{
+    backgroundColor: '#ff0000',
+  }
 }
 
 export default TabNav;
