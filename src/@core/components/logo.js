@@ -1,7 +1,9 @@
+/** @jsxImportSource theme-ui */
+
 import { jsx, Image } from 'theme-ui'
 import { Link } from './link'
 
-import LogoDark from '../../assets/home/logo.png'
+import LogoDark from '../../assets/home/logowhite.png'
 
 export default function Logo() {
   return (

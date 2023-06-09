@@ -15,7 +15,7 @@ const PrincipleMessage = () => {
                 </p>
             </Container>
     <Container className='Image'>
-        <Image src = {image}/>
+        <Image src = {image.src}/>
     </Container>
         </Flex>
     </Box>
