@@ -147,6 +147,7 @@ export default PopularCourse
 const styles = {
   popularCourse: {
     paddingBottom: ['100px'],
+    paddingTop: ['100px'],
     '@media(max-width: 575px)': {
       paddingBottom: '60px'
     },

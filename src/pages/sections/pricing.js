@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Container } from 'theme-ui'
+import { Box, Grid, Container, Flex, Image, Heading, Text, Badge, Card } from 'theme-ui'
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io'
 import BlockTitle from '../../@core/components/block-title'
 import PriceCard from '../../@core/components/price-card'
@@ -147,7 +147,7 @@ const pricingYearlyData = [
 const Pricing = () => {
   const [plan, setPlan] = useState(false)
   const imageUrls = [
-    'https://images.unsplash.com/photo-1684457718008-d561d76dfbb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=378&q=80',
+    'https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg',
     'https://images.unsplash.com/photo-1684318551812-63d888cce300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
   ];
 
@@ -158,12 +158,16 @@ const Pricing = () => {
     <div className="gallery" style={{display: 'flex'}}>
     {imageUrls.map((imageUrl, index) => (
       // <img key={index} src={imageUrl} height = "30%" width = "50%" alt={`Image ${index + 1}`} />
-      <div style = {{background: `url(${imageUrl})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      width: '50%',
-      height: '300px'}}></div>
+      <Card sx={{ borderRadius: '3', boxShadow: '0 8px 16px -4px rgba(0,0,0,.1), 0 0 8px -3px rgba(0,0,0,.1)', }}>
+  <Image src={imageUrl} sx={{ borderTopLeftRadius: '3', borderTopRightRadius: '3' }} />
+  <Box sx={{ p: '3' }}>
+    <Heading as='h2' mb={2} >The Beach Front</Heading>
+    <Text mb={3}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</Text>
+    <Flex>
+      <Badge mr={1}>summer</Badge><Badge mr={1}>photography</Badge><Badge mr={1}>travel</Badge>
+    </Flex>
+  </Box>
+</Card>
     ))}
   </div>
   </Grid>

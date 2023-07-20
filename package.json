@@ -106,6 +106,7 @@
     "request": "^2.88.2",
     "slate": "^0.91.4",
     "slate-react": "^0.92.0",
+    "styled-components": "^6.0.0-rc.3",
     "suneditor-react": "^3.4.1",
     "swiper": "^9.3.0",
     "theme-ui": "^0.15.7",

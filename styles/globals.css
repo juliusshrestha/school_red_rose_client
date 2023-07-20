@@ -22,3 +22,6 @@ code:not([class*='language-']):after {
 code[class*='language-'] {
   padding: 0;
 }
+#uncontrolled-tab-example .nav-link {
+  color: red; /* Replace with the desired text color */
+}

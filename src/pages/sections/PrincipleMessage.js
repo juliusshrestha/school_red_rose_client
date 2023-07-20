@@ -4,7 +4,8 @@ import image from '../../assets/home/principal.png'
 import BlockTitle from '@/@core/components/block-title'
 const PrincipleMessage = () => {
   return (
-    <Box>
+    <Box sx = {styles.box}>
+      <Container>
         <BlockTitle sx={styles.blockTitle}
           tagline='Message from principal'
           heading='Our Principal'/>
@@ -18,6 +19,7 @@ const PrincipleMessage = () => {
         <Image src = {image.src}/>
     </Container>
         </Flex>
+        </Container>
     </Box>
   )
 }
@@ -26,10 +28,22 @@ const styles = {
       blockTitle: {
         textAlign: 'center',
         marginBottom: '60px',
+        color: 'white',
         '@media(max-width: 575px)': {
           marginBottom: '30px'
         }
       },
+
+      box:{
+        backgroundColor:'#8C0010',
+        height: '100vh',
+        color: 'white',
+        display: 'grid',
+        paddingBottom: '10px',
+        paddingTop: '10px',
+        alignItems: 'center',
+
+      }
     }
 
 export default PrincipleMessage

@@ -30,6 +30,7 @@ export default function Footer() {
 const styles = {
   footer: {
     paddingBottom: '60px',
+    height: '100vh',
     '@media(max-width: 1024px)': {
       paddingBottom: '70px'
     },
