@@ -8,6 +8,7 @@ import { Container } from 'theme-ui';
 import PopularCourse from './popular-course';
 // import style from '../sections/TabNav.module.css';
 import styled from 'styled-components';
+import News from './News';
 
 const StyledTab = styled(Tab)`
   .nav-link {
@@ -32,14 +33,14 @@ function TabNav() {
     >
       <Tab eventKey="About us" title="About Us">
         <Container>
-        <PopularCourse />  
+        <PopularCourse subtitle = "#1 school in Nepal" title = "About US"/>  
         </Container>
       </Tab>
       <Tab eventKey="Contact Us"  className = "Tab" title="Contact Us" >
         <Contact/>
       </Tab>
-      <Tab eventKey="contact" title="Contact">
-        Tab content for Contact
+      <Tab eventKey="News and Notices" title="News">
+       <News/>
       </Tab>
     </Tabs>
   );

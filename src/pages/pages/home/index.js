@@ -38,7 +38,7 @@ function IndexPage() {
             <Pricing /> 
             {/*Gallery section*/}
             {/* <CtaTwo /> */}
-            {/* <FAQ />  */}
+            <FAQ /> 
             {/*FAQ Section */}
             {/* <CtaOne /> */}
             {/* <Modal /> */}

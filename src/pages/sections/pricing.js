@@ -3,159 +3,49 @@ import { Box, Grid, Container, Flex, Image, Heading, Text, Badge, Card } from 't
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io'
 import BlockTitle from '../../@core/components/block-title'
 import PriceCard from '../../@core/components/price-card'
+import Gallery from '../../pages/sections/Gallery'
 
-const pricingMonthlyData = [
-  {
-    name: 'Free Plan',
-    description: 'For Small teams or office',
-    buttonText: 'Start free trail',
-    points: [
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Ultimate access to all course, exercises and assessments',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Free acess for all kind of exercise corrections with downloads.',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Total assessment corrections with free download access system',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCloseCircle />,
-        text: 'Unlimited download of courses on the mobile app contents',
-        isAvailable: false
-      },
-      {
-        icon: <IoIosCloseCircle />,
-        text: 'Download and print courses and exercises in PDF',
-        isAvailable: false
-      }
-    ]
-  },
-  {
-    header: 'Recommended',
-    name: 'Premium',
-    description: 'For startup enterprise',
-    priceWithUnit: '$49.99/',
-    pricePeriod: 'mo',
-    buttonText: 'Subscribe Now',
-    points: [
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Ultimate access to all course, exercises and assessments',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Free acess for all kind of exercise corrections with downloads.',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Total assessment corrections with free download access system',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Unlimited download of courses on the mobile app contents',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Download and print courses and exercises in PDF',
-        isAvailable: true
-      }
-    ]
-  }
-]
-
-const pricingYearlyData = [
-  {
-    name: 'Free Plan',
-    description: 'For Small teams or office',
-    buttonText: 'Start free trail',
-    points: [
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Ultimate access to all course, exercises and assessments',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Free acess for all kind of exercise corrections with downloads.',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Total assessment corrections with free download access system',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCloseCircle />,
-        text: 'Unlimited download of courses on the mobile app contents',
-        isAvailable: false
-      },
-      {
-        icon: <IoIosCloseCircle />,
-        text: 'Download and print courses and exercises in PDF',
-        isAvailable: false
-      }
-    ]
-  },
-  {
-    header: 'Recommended',
-    name: 'Premium',
-    description: 'For startup enterprise',
-    priceWithUnit: '$99.99/',
-    pricePeriod: 'yr',
-    buttonText: 'Subscribe Now',
-    points: [
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Ultimate access to all course, exercises and assessments',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Free acess for all kind of exercise corrections with downloads.',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Total assessment corrections with free download access system',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Unlimited download of courses on the mobile app contents',
-        isAvailable: true
-      },
-      {
-        icon: <IoIosCheckmarkCircle />,
-        text: 'Download and print courses and exercises in PDF',
-        isAvailable: true
-      }
-    ]
-  }
-]
 
 const Pricing = () => {
-  const [plan, setPlan] = useState(false)
-  const imageUrls = [
-    'https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg',
-    'https://images.unsplash.com/photo-1684318551812-63d888cce300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
+  // const [plan, setPlan] = useState(false)
+  // const imageUrls = [
+  //   'https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg',
+  //   'https://images.unsplash.com/photo-1684318551812-63d888cce300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'
+  // ];
+
+  const photos = [
+    {
+      src: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      width: 4,
+      height: 3
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1627556704302-624286467c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+      width: 1,
+      height: 1
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      width: 16,
+      height: 9
+    },
+    {
+      src: 'https://plus.unsplash.com/premium_photo-1661299341775-b732859b9a3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      width: 4,
+      height: 3
+    },
+    {
+      src:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      width: 1,
+      height: 1
+    }
   ];
 
   return (
 <box>
  <BlockTitle sx={styles.pricing.blockTitle} tagline='Activities' heading='Our Gallery' />
 <Grid>
-    <div className="gallery" style={{display: 'flex'}}>
+    {/* <div className="gallery" style={{display: 'flex'}}>
     {imageUrls.map((imageUrl, index) => (
       // <img key={index} src={imageUrl} height = "30%" width = "50%" alt={`Image ${index + 1}`} />
       <Card sx={{ borderRadius: '3', boxShadow: '0 8px 16px -4px rgba(0,0,0,.1), 0 0 8px -3px rgba(0,0,0,.1)', }}>
@@ -169,7 +59,8 @@ const Pricing = () => {
   </Box>
 </Card>
     ))}
-  </div>
+  </div> */}
+  <Gallery photo = {photos}/>
   </Grid>
   </box>
     // <Box as='section' id='pricing' sx={styles.pricing}>

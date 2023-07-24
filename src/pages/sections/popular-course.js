@@ -1,8 +1,8 @@
-import { Box, Container } from 'theme-ui'
+import { Box, Button, Container } from 'theme-ui'
 import React from 'react'
 import BlockTitle from '../../@core/components/block-title'
 import PopularCard from '../../@core/components/popular-card'
-import LogoDark from '../../assets/home/logo.png'
+import LogoDark from '../../assets/home/photo.jpg'
 import { Image } from 'theme-ui'
 
 // const popularCourseData = [
@@ -96,45 +96,34 @@ import { Image } from 'theme-ui'
 //   }
 // ]
 
-const PopularCourse = () => {
+const PopularCourse = (props) => {
   return (
     <Box as='section' id='courses' sx={styles.popularCourse}>
       <Container>
         <BlockTitle
           sx={styles.popularCourse.blockTitle}
-          tagline='#1 Schoool in Nepal'
-          heading='ABOUT US'
+          tagline={props.subtitle}
+          heading={props.title}
         />
-        {/* {popularCourseData.map((course, index) => (
-          <Box sx={styles.popularCourse.col} key={index}>
-            <PopularCard
-              key={index}
-              listData={course.list}
-              expanded={course.expanded}
-              starCount={course.starCount}
-              title={course.title}
-              reviewCount={course.reviewCount}
-              watchCount={course.watchCount}
-              videoLink={course.videoLink}
-            />
-          </Box>
-        ))} */}
         <Container sx = {styles.popularCourse.Container}>
-        <Box>
-          <p>Welcome to our school! We are dedicated to providing quality education and creating a nurturing environment for our students. With experienced teachers and a comprehensive curriculum, we strive to foster academic excellence and personal growth.
+        <Box pr='4'>
+          <p style = {styles.popularCourse.text}>Welcome to our school! We are dedicated to providing quality education and creating a nurturing environment for our students. With experienced teachers and a comprehensive curriculum, we strive to foster academic excellence and personal growth.
         </p>
-        <p>
+        <p style = {styles.popularCourse.text}>
           Our school offers a wide range of educational programs and extracurricular activities to cater to the diverse interests and talents of our students. We believe in the holistic development of each individual, focusing not only on academics but also on character building, creativity, and critical thinking skills.
         </p>
-        <p>
+        <p style = {styles.popularCourse.text}>
           At our school, we prioritize creating a supportive community where students feel valued and encouraged to explore their full potential. We promote a culture of inclusivity, respect, and collaboration, fostering strong relationships among students, teachers, and parents.
         </p>
-        <p>
+        <p style = {styles.popularCourse.text}>
           We are proud of our achievements and the success of our students. If you're looking for an educational institution that promotes excellence, growth, and a passion for learning, we invite you to join our school community.
         </p>
         </Box>
         <Box>
-          <Image src={LogoDark} width= '100%'/>
+          <Image src={LogoDark.src}/>
+        </Box>
+        <Box>
+          <Button>Read More</Button>
         </Box>
       </Container>
       </Container>
@@ -159,8 +148,9 @@ const styles = {
       }
     },
     Container:{
-      display: 'Flex',
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
     },
-    col: {}
+    text: {textAlign: 'justify', textJustify: 'inter-word', fontSize: 14,}
   }
 }
