@@ -15,6 +15,10 @@ import Pricing from '../../sections/pricing'
 import PopularCourse from '../../sections/popular-course'
 import CtaThree from '../../sections/cta-three'
 import FavoriteCourse from '../../sections/favorite-course'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import TabNav from 'src/pages/sections/TabNav'
+import PrincipleMessage from 'src/pages/sections/PrincipleMessage'
+import Mapp from 'src/pages/sections/Mapp'
 
 function IndexPage() {
   return (
@@ -24,15 +28,20 @@ function IndexPage() {
           <Layout>
             <SEO description='Website' title='Red Rose English Boarding School' />
             <Banner />
-            <FavoriteCourse />
-            <CtaThree />
-            <PopularCourse />
-            <WorkFlow />
-            <Pricing />
-            <CtaTwo />
-            <FAQ />
-            <CtaOne />
-            <Modal />
+            {/* <FavoriteCourse /> */}
+            {/* <CtaThree /> */}
+         
+            <TabNav/>
+            {/* <WorkFlow /> */}
+         <PrincipleMessage/>
+            {/*About section*/}
+            <Pricing /> 
+            {/*Gallery section*/}
+            {/* <CtaTwo /> */}
+            <FAQ /> 
+            {/*FAQ Section */}
+            {/* <CtaOne /> */}
+            {/* <Modal /> */}
           </Layout>
         </VideoProvider>
       </StickyProvider>

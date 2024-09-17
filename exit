@@ -1,0 +1,318 @@
+[33mcommit c42614ba8dcd4ebc6c65d942b98cf77170691b8b[m[33m ([m[1;36mHEAD -> [m[1;32mSHL_Land[m[33m)[m
+Author: Shlok Koirala <shlokkoirala19@gmail.com>
+Date:   Fri May 19 17:22:19 2023 +0545
+
+    made some changes in About, FAQ and Gallery section, there are issue in Accordion to be fixed
+
+[33mcommit fef314024bfe0c27be9e94822812615a245089bb[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Fri May 19 09:07:19 2023 +0545
+
+    latest
+
+[33mcommit a0a0fbc445e624ac9f58cdb011b5f2086d7eeefe[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue May 9 12:51:47 2023 +0545
+
+    landing page
+
+[33mcommit b82f97ea249ccf77113e42eccfe3df8029d025b1[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 9 23:02:59 2023 +0545
+
+    minorfix
+
+[33mcommit f0f1c1cd5007b6dd0caa182f327df6b1d2c3ceff[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 9 23:02:41 2023 +0545
+
+    editordiscard
+
+[33mcommit 4a6b6648d135862013d945f8e65131bfed7e99d5[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 9 23:02:22 2023 +0545
+
+    suneditor
+
+[33mcommit 9ee71c1c30e68b35cf7d3552b96317a5886d7054[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 9 23:02:11 2023 +0545
+
+    suneditor
+
+[33mcommit cce4d67864af78ddc86c70e87be0aa56600949b0[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sat Apr 8 20:02:50 2023 +0545
+
+    check existing album
+
+[33mcommit a514641a5e999b28abb45279e8ebf22bab382afa[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sat Apr 8 20:02:40 2023 +0545
+
+    add photo through album
+
+[33mcommit f12c4203d7ea680341925f367f82ae912795ab3d[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sat Apr 8 20:02:00 2023 +0545
+
+    album props used
+
+[33mcommit ca2982de49c896a390cceaafd7a34d08fb7f67f9[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sat Apr 8 20:01:45 2023 +0545
+
+    album props use
+
+[33mcommit d0c12440fbda4b8799a69dd50aa1cd53aca8cb53[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:20:47 2023 +0545
+
+    tab account fix
+
+[33mcommit a96144b36c5670747b6fe88f7a2a8bf14788e848[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:20:38 2023 +0545
+
+    tab gallery fix
+
+[33mcommit 5a661210d974187c621f9f7eb851f34ca7672736[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:19:22 2023 +0545
+
+    album tab added
+
+[33mcommit 442d5d1100a9d8ed3bbadcbd6cfa22f1aee299c3[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:19:12 2023 +0545
+
+    get method modified
+
+[33mcommit 6fcfe2b13020b3ba66c64851441c5e36be425970[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:18:57 2023 +0545
+
+    minor fix
+
+[33mcommit 77f361e9ec9d52aaa6fb6f4653ad29361339bf0a[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:18:44 2023 +0545
+
+    tab account minor fix
+
+[33mcommit 3beed718aeef5db1b6654068e6aafd148bfe9161[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:18:31 2023 +0545
+
+    album tab added
+
+[33mcommit cc1878e6fb2c353be9faacf6fbc9f3d186e0cec8[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:18:14 2023 +0545
+
+    deleted
+
+[33mcommit 6c16245fee2fbff2d8ef76c82aeae7d2eaf7de26[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:18:02 2023 +0545
+
+    get comp details edited
+
+[33mcommit 358cffe0cefb0bee6befc41de5fad677f8b4ed30[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:17:43 2023 +0545
+
+    deleted
+
+[33mcommit 295187f9997792777066e2d877c62a52c4537573[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Apr 5 22:17:35 2023 +0545
+
+    get album details axios instace
+
+[33mcommit 16e2da5cecf8404a0b23a263be17b1f1e3ca6b12[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:44:41 2023 +0545
+
+    minor
+
+[33mcommit c5a8c40022354a5857631b9b070fdc9e931d06a1[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:44:32 2023 +0545
+
+    TabGallery view added
+
+[33mcommit 7202eadef71a0d40fbde4853e4f4b16762e25989[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:44:00 2023 +0545
+
+    tab security fixes
+
+[33mcommit 10053b21507de6b25b32acb51d9d6f9d52c346e9[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:43:43 2023 +0545
+
+    tab account fixes
+
+[33mcommit f21a6b6104a47703f5d188c03ca7e553ab9ebcaa[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:43:19 2023 +0545
+
+    gallery component added
+
+[33mcommit ee9630ea8b8622c37ad3569925b1f55621b85a87[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:43:02 2023 +0545
+
+    galllery navigation added
+
+[33mcommit 9b89a157338195f4c5f35fb5d1813216ef465d9d[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:42:41 2023 +0545
+
+    Red Rose Title change
+
+[33mcommit f2e3391ba41caf7e5ce51bfd6e830eb6915e59b2[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:42:02 2023 +0545
+
+    axios delete
+
+[33mcommit f5645fbb1152d9c515f89ece081e3a20e8659232[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:41:43 2023 +0545
+
+    getAlbumCategories  axios instance
+
+[33mcommit 80621c1c2cd8f44632e5091393b4d541b4e13c6f[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:41:04 2023 +0545
+
+    axios upldate
+
+[33mcommit bd520b6ecdad3b65fbcbda6b93e2e5013cabd32e[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Sun Apr 2 01:40:49 2023 +0545
+
+    react dropzone added
+
+[33mcommit 9e61831466c42c5398121f0f6d5208934cd1c0aa[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:57:43 2023 +0545
+
+    error toast message
+
+[33mcommit 646faa572b77e40d67607f18be39fa111c3632f3[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:56:52 2023 +0545
+
+    check token method added
+
+[33mcommit 10c0c09373eaac514a372bfbeddda7370d31053d[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:56:30 2023 +0545
+
+    check token
+
+[33mcommit cfa20e1de5113995f7952ec17d3e1c8923490986[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:56:20 2023 +0545
+
+    toastcontainer
+
+[33mcommit a51704c6c3eb6297fe9493026fe2e63736c54211[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:56:00 2023 +0545
+
+    interceptor added
+
+[33mcommit de2c38aad711457c239871da5b50fe42c0545a8c[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:55:45 2023 +0545
+
+    tostify added
+
+[33mcommit e9a9385238e12ca986aaa07793b97b5297d634ee[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Wed Mar 29 13:55:32 2023 +0545
+
+    tostify
+
+[33mcommit 89a05089b9650a8506db8ac7ed1df57c85dee31a[m
+Merge: bf4c08a 12015cb
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:24:26 2023 +0545
+
+    Merge branch 'main' of https://github.com/juliusshrestha/school_red_rose_client
+
+[33mcommit bf4c08ab395b629c1fb0f27ee0d4ee1f83f3f4e5[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:24:23 2023 +0545
+
+    Editor fix contd..
+
+[33mcommit 8f3f63511b4da719e6bb89fab6c344d8a0ac66b4[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:24:05 2023 +0545
+
+    forgot password patch method added
+
+[33mcommit 604bb73375b6aaaa1bcee30f62e01b341c8cc091[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:23:37 2023 +0545
+
+    minor fix
+
+[33mcommit d2c4b699ff173e00fcc7e98f662109374dcff2c4[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:23:18 2023 +0545
+
+    useeffect added
+
+[33mcommit b57701ae0c1deb89d09a67e44a6ef9cf134b2002[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:23:04 2023 +0545
+
+    useEffect added
+
+[33mcommit d0668cb29410321ea98fb5dda604a98195bb5383[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:22:48 2023 +0545
+
+    useEffect added
+
+[33mcommit a23e3497e01a5ef546060adc88ba68a7bcd069c1[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:22:30 2023 +0545
+
+    check local storage for token
+
+[33mcommit a41f5d0e2f8165d18fe88596a35b6ce4208708ab[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:22:14 2023 +0545
+
+    minor fix
+
+[33mcommit 1463f4c972811819de6a0c65487e9058cf938264[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:21:53 2023 +0545
+
+    name fix
+
+[33mcommit 3823979c7a18aedba1c586e8de1ce95b0eda90ff[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Tue Mar 28 14:21:31 2023 +0545
+
+    added dependencies
+
+[33mcommit 12015cbf7680371e6f01fce9968d39c2dab8c477[m
+Author: Julius Shrestha <41096619+juliusshrestha@users.noreply.github.com>
+Date:   Mon Mar 27 07:34:51 2023 +0545
+
+    readme update
+
+[33mcommit 4c3e22428355a9fa5a6db8e7c440583fa2b9210f[m
+Author: Julius <juliusshrestha29@gmail.com>
+Date:   Mon Mar 27 07:26:06 2023 +0545
+
+    First

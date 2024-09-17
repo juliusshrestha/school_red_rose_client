@@ -1,10 +1,12 @@
-// /** @jsxImportSource theme-ui */
-import { jsx, Container, Flex, Button, Box } from 'theme-ui'
+/** @jsxImportSource theme-ui */
+
+import {  Container, Flex, Button, Box } from 'theme-ui'
 import { keyframes } from '@emotion/react'
 import { IoIosUnlock } from 'react-icons/io'
 import { NavLink, Link } from '../../../@core/components/link'
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll'
 import Logo from '../../../@core/components/logo'
+import Bg_header from '../../../assets/home/banner-bg-1-1.png'
 
 import { DrawerProvider } from '../../../@core/context/drawer/drawer.provider'
 import MobileDrawer from './mobileDrawer'
@@ -34,7 +36,7 @@ export default function Header({ className }) {
             ))}
           </Flex>
 
-          <Link path='/pages/login' ml={2} label='Login' sx={styles.headerBtn} variant='buttons.primary' />
+          {/* <Link path='/pages/login' ml={2} label='Login' sx={styles.headerBtn} variant='buttons.primary' /> */}
 
           <MobileDrawer />
         </Container>
@@ -61,7 +63,7 @@ const styles = {
     backgroundColor: 'transparent',
     transition: 'all 0.4s ease',
     '&.sticky': {
-      backgroundColor: 'background',
+      backgroundImage: `url(${Bg_header.src})`,
       color: 'text',
       py: '15px',
       boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06)'
@@ -80,16 +82,20 @@ const styles = {
   },
   nav: {
     mx: 'auto',
+    display: 'flex',
+    justifyContent: 'space-around',
     '@media screen and (max-width: 991px)': {
       display: 'none'
     },
     navLink: {
       fontSize: '16px',
+      textDecoration: 'none',
       color: '#fff',
+      mx : '10px',
       fontWeight: '400',
       cursor: 'pointer',
       lineHeight: '1.2',
-      mr: '48px',
+      // mr: '48px',
       transition: '500ms',
       ':last-child': {
         mr: '0'

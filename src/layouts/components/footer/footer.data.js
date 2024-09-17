@@ -50,49 +50,20 @@ export default [
     ],
   },
   {
-    header: 'My Account',
+    header: 'Quick Links',
     items: [
       {
         path: '/',
-        label: 'Press inquiries',
+        label: 'News',
       },
       {
         path: '/',
-        label: 'Social media ',
+        label: 'Notices',
       },
       {
         path: '/',
-        label: 'directories',
-      },
-      {
-        path: '/',
-        label: 'Images & B-roll',
-      },
-      {
-        path: '/',
-        label: 'Permissions',
+        label: 'Gallery',
       },
     ],
-  },
-  {
-    header: 'Policy',
-    items: [
-      {
-        path: '/',
-        label: 'Application security',
-      },
-      {
-        path: '/',
-        label: 'Software principles ',
-      },
-      {
-        path: '/',
-        label: 'Unwanted software policy',
-      },
-      {
-        path: '/',
-        label: 'Responsible supply chain',
-      },
-    ],
-  },
+  }
 ];

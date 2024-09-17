@@ -36,7 +36,7 @@ const ThemeComponent = props => {
   if (themeConfig.responsiveFontSizes) {
     theme = responsiveFontSizes(theme)
   }
-  console.log(theme)
+  // console.log(theme)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
